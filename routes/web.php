@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LotteryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,4 +24,10 @@ Route::controller(LoginController::class)->prefix('/')->group(function() {
     Route::post('/authenticate', 'authenticate')->name('authenticate');
     Route::middleware('auth')->get('/home', 'home')->name('home');
     Route::middleware('auth')->get('/logout', 'logout')->name('logout');
+});
+
+Route::middleware('auth')->controller(LotteryController::class)->prefix('/lotteries')->group(function() {
+    Route::get('/', 'index')->name('showLotteries');
+    Route::post('/create', 'create')->name('createLottery');
+    Route::patch('/deactivate', 'deactivate')->name('deactivateLottery');
 });

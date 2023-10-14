@@ -13,7 +13,8 @@ class Lottery extends Model
 
     protected $fillable = [
         'prize',
-        'user_id'
+        'user_id',
+        'is_active'
     ];
 
     public function competitors(): BelongsToMany{

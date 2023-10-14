@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('lotteries', function (Blueprint $table) {
             $table->id();
             $table->string('prize');
+            $table->boolean('is_active')->default(false);
             $table->foreignId('user_id')
                 ->constrained()
                 ->cascadeOnUpdate();

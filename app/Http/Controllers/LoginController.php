@@ -32,13 +32,7 @@ class LoginController extends Controller
     }
 
     public function home(): View{
-        $lotteries = Lottery::paginate();
-        $competitors = Competitor::paginate();
-
-        return view('login.home', [
-            'lotteries' => $lotteries,
-            'competitors' => $competitors
-        ]);
+        return view('login.home');
     }
 
     public function logout(Request $request): RedirectResponse{
