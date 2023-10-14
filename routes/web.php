@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(LoginController::class)->prefix('/')->group(function() {
+    Route::post('/login', 'login')->name('login');
+    Route::post('/authenticate', 'authenticate')->name('authenticate');
+    Route::middleware('auth')->get('/home', 'home')->name('home');
+    Route::middleware('auth')->get('/logout', 'logout')->name('logout');
 });
