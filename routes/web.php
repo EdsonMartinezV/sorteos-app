@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CompetitorController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LotteryController;
 use Illuminate\Support\Facades\Route;
@@ -30,4 +31,9 @@ Route::middleware('auth')->controller(LotteryController::class)->prefix('/lotter
     Route::get('/', 'index')->name('showLotteries');
     Route::post('/create', 'create')->name('createLottery');
     Route::patch('/deactivate', 'deactivate')->name('deactivateLottery');
+});
+
+Route::controller(CompetitorController::class)->prefix('/competiitors')->group(function() {
+    Route::middleware('auth')->get('/', 'index')->name('showCompetitors');
+    Route::post('/create', 'create')->name('createCompetitor');
 });
