@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [LotteryController::class, 'guestIndex'])->name('index');
 
 Route::controller(LoginController::class)->prefix('/')->group(function() {
     Route::post('/login', 'login')->name('login');
