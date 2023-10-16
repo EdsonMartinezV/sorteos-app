@@ -31,8 +31,8 @@ class LoginController extends Controller
         ]);
     }
 
-    public function home(): View{
-        return view('login.home');
+    public function dashboard(): View{
+        return view('login.dashboard');
     }
 
     public function logout(Request $request): RedirectResponse{

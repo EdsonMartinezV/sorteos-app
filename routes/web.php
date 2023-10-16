@@ -21,7 +21,7 @@ Route::get('/', [LotteryController::class, 'guestIndex'])->name('index');
 Route::controller(LoginController::class)->prefix('/')->group(function() {
     Route::post('/login', 'login')->name('login');
     Route::post('/authenticate', 'authenticate')->name('authenticate');
-    Route::middleware('auth')->get('/home', 'home')->name('home');
+    Route::middleware('auth')->get('/dashboard', 'dashboard')->name('dashboard');
     Route::middleware('auth')->get('/logout', 'logout')->name('logout');
 });
 
